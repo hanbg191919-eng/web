@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 처리</title>
+    <script>
+        function greet() {
+            alert('안녕히가세요!');
+        }
+    </script>
+</head>
+<body>
+    <button onclick="greet();">버튼</button>
+</body>
+</html>
+
+HTML 태그 안애 onlick='' 을 직접 적눈 방식을 '인라인 이벤트 모델'이라고 한다.
+문제점: 프로젝트가 커져서 버튼이 수백개가 되면 HTML 소스코드가 자바스크립트 명령어로 뒤범벅이
+되어 유지보수하기사 매우 어려워진다. 또한 하나의 버튼애 '클릭 시 로그 기록', '클릭 시 알림창
+같은 여러 기능을 동시에 연결하기기가 힘들다.'
+트랜드: 실무에서는 HTML은 오직 뼈대 구조만 담당하게 놔두고, 자바스크립트 파일 안에서 HTML요소를
+선택해 addEventListener() 라는 메서드로 이벤트를 따로 감시하고 붙이는 방식을 사용한다.
+
+현업에서 function 키워드보다 더 간결하고 직관적인

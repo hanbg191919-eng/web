@@ -12,18 +12,18 @@
         const appContainer = document.querySelector('#subway-app'); 
 
         // 1. 초기 노선 데이터 정의
-        const baseSubawy = ['2호선', '9호선', '7호선', '4호선', '3호선'];
+        const baseSubway = ['2호선', '9호선', '7호선', '4호선', '3호선'];
 
         // 2. shift 대신 slice와 스프레드로 맨 앞 원소 제거
-        const shiftedSubway = baseSubawy.slice(1);
+        const shiftedSubway = baseSubway.slice(1);
 
-        console.log(baseSubawy);
+        console.log(baseSubway);
         console.log(shiftedSubway);
 
         // 3. unshift 대신 스프레드 연산자로 맨앞에 1호선 넣기
         const unshiftedSubway = ['1호선', ...shiftedSubway];
 
-        console.log(baseSubawy);
+        console.log(baseSubway);
         console.log(shiftedSubway);
         console.log(unshiftedSubway);
 
@@ -39,6 +39,16 @@
         const finalSubwayLine = [...unshiftedSubway, ...dbFetchedDate].sort();
 
         console.log(finalSubwayLine);
+
+        appContainer.innerHTML = `
+            <h2>실시간 모던 지하철 노선 대기열</h2>
+            <p><strong>기본 배차 노선: </strong>[${baseSubway.join('-> ')}]</p>
+            <p><strong>맨 앞 노선 제외(shift 효과): </strong>[${shiftedSubway.join(' -> ')}]</p>
+            <p><strong>신규 1호선 전방 삽입(unshift 효과): </strong>[${unshiftedSubway.join(' -> ')}]</p>
+            <p><strong>백엔드 DB 누적 데이터:(push 활용)</strong>[${dbFetchedDate.join(' join ')}]</p>
+            <h3>최종 배차 완료 레이아웃</h3>
+            <p style='font-size: 1.2rem; color: blue;'><strong>${finalSubwayLine.join(' -> ')}</strong></p>
+        `;
     </script>
 </body>
 </html>
